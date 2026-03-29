@@ -263,7 +263,7 @@ module Unix::Pkg
     when /^(amazon(fips)?|fedora|el|redhat|centos)$/
       command_name = 'yum'
       command_name = 'dnf' if (variant == 'fedora' && version.to_i > 21) || (variant == 'amazon' && version.to_i >= 2023)
-      execute("#{command_name} --nogpgcheck localinstall -y #{onhost_package_file}")
+      execute("#{command_name} --nogpgcheck install -y #{onhost_package_file}")
     when /^(opensuse|sles)$/
       execute("zypper --non-interactive --no-gpg-checks in #{onhost_package_file}")
     when /^(debian|ubuntu)$/
